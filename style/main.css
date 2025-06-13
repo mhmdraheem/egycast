@@ -364,7 +364,6 @@ summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
 }
 .testimonials .testimonial-grid .date {
   color: #767676;
