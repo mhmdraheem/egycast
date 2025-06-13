@@ -6,6 +6,7 @@
 h1,
 h2,
 h3,
+h4,
 p {
   padding: 0;
   margin: 0;
@@ -14,6 +15,7 @@ p {
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 body {
@@ -30,19 +32,35 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(32px, 6vw, 80px) clamp(16px, 3vw, 32px);
+  padding: clamp(44px, 6vw, 80px) clamp(16px, 3vw, 32px);
 }
 
 .logo {
   color: black;
   text-decoration: none;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(24px, 3vw, 30px);
   font-weight: 700;
 }
 
 h1 {
   font-size: clamp(44px, 5vw, 80px);
   font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-size: clamp(24px, 2vw, 28px);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 500;
 }
 
 p,
@@ -53,17 +71,12 @@ p,
 
 .btn {
   font-size: clamp(16px, 2vw, 18px);
+  font-weight: 700;
+}
+
+summary {
+  font-size: clamp(16px, 2vw, 18px);
   font-weight: 500;
-}
-
-@media (min-width: 1024px) {
-  .container {
-  }
-}
-
-@media (min-width: 767px) {
-  .container {
-  }
 }
 
 @media (max-width: 768px) {
@@ -88,7 +101,7 @@ p,
   }
   &.secondary {
     background: transparent;
-    border: 2px solid #000;
+    border: 1px solid #000;
     color: #000;
     &:hover {
       background: #000;
@@ -182,25 +195,51 @@ p,
 }
 
 .solutions {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @media (max-width: 992px) {
+      gap: 2rem;
+    }
+  }
   .top {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5rem;
     .text {
+      flex-basis: 60%;
+      @media (max-width: 992px) {
+        flex-basis: 100%;
+      }
+    }
+    .img-wrapper {
       flex: 1;
+      @media (max-width: 992px) {
+        display: none;
+      }
     }
     img {
-      width: 200px;
+      max-width: 100%;
+      max-height: 180px;
     }
   }
 
   .solution-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
     .solution-card {
-      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      @media (max-width: 922px) {
+        flex-direction: row;
+      }
       img {
-        width: 35px;
-        margin-bottom: 1rem;
+        width: 40px;
       }
     }
   }
@@ -209,13 +248,16 @@ p,
 .trust-signal {
   .container {
     display: flex;
+    gap: 2rem;
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
   }
   .text {
     flex: 1;
   }
   ul {
-    padding: 0;
-    list-style: none;
+    padding: 16px 0 32px;
   }
   li {
     display: flex;
@@ -223,27 +265,29 @@ p,
       max-width: 30px;
     }
   }
+  .img-wrapper {
+    flex: 1;
+  }
   img {
-    max-width: 50%;
+    max-width: 100%;
   }
 }
 
 .services {
   text-align: center;
-  h2 {
-    margin-bottom: 2rem;
-  }
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
   }
   .service-card {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 25px;
     border: 1px solid #cecece;
     display: flex;
+
+    overflow: hidden;
     .img-wrapper {
       padding: 32px 16px;
       width: 80px;
@@ -272,6 +316,7 @@ p,
     .content {
       padding: 32px;
       display: flex;
+      gap: 2rem;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
@@ -288,8 +333,7 @@ p,
 
     p {
       color: #555;
-      margin-bottom: 1.5rem;
-      text-align: right; /* Ensure paragraph text is right-aligned */
+      text-align: right;
     }
   }
 
@@ -302,44 +346,53 @@ p,
   }
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  .review-card {
-    border: 1px solid #cecece;
-    border-radius: 25px;
-    padding: 32px 32px;
-    height: 380px;
-    display: flex;
-    flex-direction: column;
+.testimonials {
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .review-card {
+      border: 1px solid #cecece;
+      border-radius: 25px;
+      padding: 32px 32px;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .date {
+      color: #767676;
+    }
+    .reviewer {
+      display: flex;
+      gap: 16px;
+      margin-top: auto;
+    }
+    .reviewer .details {
+      display: flex;
+      flex-direction: column;
+    }
+    .reviewer img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    .details span {
+      color: #767676;
+    }
   }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-  }
-  .date {
-    color: #767676;
-  }
-  .reviewer {
-    display: flex;
-    gap: 16px;
-    margin-top: auto;
-  }
-  .reviewer .details {
-    display: flex;
-    flex-direction: column;
-  }
-  .reviewer img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
-  .details span {
-    color: #767676;
+  .btn {
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
   }
 }
 
@@ -349,25 +402,81 @@ p,
   text-align: center;
   .container {
     display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    @media (max-width: 992px) {
+      flex-direction: column;
+
+      .support .container {
+        flex-direction: column-reverse;
+      }
+    }
   }
   .text {
     flex: 1;
   }
+  .img-wrapper {
+    flex: 1;
+  }
   img {
-    max-width: 50%;
-    margin-top: 1.5rem;
+    max-width: 100%;
+  }
+}
+
+.support .container {
+  @media (max-width: 992px) {
+    flex-direction: column-reverse;
   }
 }
 
 .faq {
-  details {
-    margin-bottom: 1rem;
-    background: #fff;
-    padding: 1rem;
-    border-radius: 8px;
+  summary {
+    padding: 2rem 0 2rem;
+    list-style: none;
     cursor: pointer;
-    summary {
+    position: relative;
+
+    &::after {
+      content: "+";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      font-weight: 300;
+      color: rgba(0, 0, 0, 1);
+      font-size: 32px;
+      transition: transform 0.2s ease;
     }
+  }
+
+  details[open] summary {
+    padding-bottom: 1rem;
+  }
+
+  details[open] summary::after {
+    content: "–";
+  }
+
+  summary::-webkit-details-marker {
+    display: none; /* Removes arrow in Chrome, Edge, Safari */
+  }
+
+  p {
+    padding-bottom: 2rem;
+  }
+  details {
+    background: #fff;
+    // border-radius: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 2s ease;
+  }
+
+  .btn {
+    margin: 0 auto;
+    width: fit-content;
+    margin-top: 2rem;
+    display: block;
   }
 }
 
@@ -378,27 +487,39 @@ p,
   a {
     color: #fff;
     text-decoration: none;
+    font-weight: 300;
+  }
+  .footer-logo {
+    margin-bottom: 2rem;
+    color: #fff;
   }
   .footer-columns {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2rem 5rem;
     justify-content: space-between;
-    .footer-logo {
-    }
+
     .footer-links,
     .footer-contact {
       h4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
       }
       ul {
         li {
-          margin-bottom: 0.25rem;
+          margin-bottom: 1rem;
         }
       }
     }
   }
+
+  .social-icons {
+    display: flex;
+    gap: 16px;
+  }
   .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-top: 2rem;
     text-align: center;
     a {
@@ -407,8 +528,11 @@ p,
   }
   .bottom {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    gap: 0 2rem;
   }
   .legal-links {
     display: flex;
@@ -420,8 +544,7 @@ p,
   .hero .container,
   .solutions .solution-grid,
   .services .services-grid,
-  .testimonials .testimonial-grid,
-  .footer-columns {
+  .testimonials .testimonial-grid {
     flex-direction: column;
   }
 
@@ -458,8 +581,4 @@ p,
       }
     }
   }
-}
-
-.hidden {
-  display: none;
 }

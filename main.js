@@ -24,3 +24,14 @@ document.addEventListener("click", (e) => {
     navMenu.classList.toggle("nav-open");
   }
 });
+
+const details = document.querySelectorAll("details");
+details[0].setAttribute("open", true);
+details.forEach((detail) => {
+  detail.addEventListener("click", (e) => {
+    details.forEach((detail2) => {
+      detail2.removeAttribute("open");
+    });
+    e.target.setAttribute("open", true);
+  });
+});
