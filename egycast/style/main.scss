@@ -3,6 +3,10 @@
   text-align: right;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 h1,
 h2,
 h3,
@@ -64,7 +68,8 @@ h4 {
 }
 
 p,
-.text-normal {
+.text-normal,
+.trust-signal li {
   font-size: clamp(16px, 2vw, 18px);
   font-weight: 300;
 }
@@ -239,7 +244,7 @@ summary {
         flex-direction: row;
       }
       img {
-        width: 40px;
+        width: clamp(35px, 4vw, 45px);
       }
     }
   }
@@ -516,6 +521,7 @@ summary {
     gap: 16px;
   }
   .footer-bottom {
+    font-size: 14px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -523,6 +529,10 @@ summary {
     text-align: center;
     a {
       text-decoration: underline;
+    }
+
+    p {
+      font-size: 14px;
     }
   }
   .bottom {
